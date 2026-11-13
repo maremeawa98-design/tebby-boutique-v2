@@ -1,0 +1,1356 @@
+{
+  "categories": [
+    {
+      "slug": "robes",
+      "name": "Robes",
+      "position": 1,
+      "univers": [
+        "femme"
+      ]
+    },
+    {
+      "slug": "ensembles-femme",
+      "name": "Ensembles classe femme",
+      "position": 2,
+      "univers": [
+        "femme"
+      ]
+    },
+    {
+      "slug": "blazers-hauts",
+      "name": "Blazers et hauts",
+      "position": 3,
+      "univers": [
+        "femme"
+      ]
+    },
+    {
+      "slug": "jupes",
+      "name": "Jupes",
+      "position": 4,
+      "univers": [
+        "femme"
+      ]
+    },
+    {
+      "slug": "pantalons",
+      "name": "Pantalons",
+      "position": 5,
+      "univers": [
+        "femme"
+      ]
+    },
+    {
+      "slug": "ensembles-confort",
+      "name": "Ensembles confort et jogging",
+      "position": 6,
+      "univers": [
+        "femme"
+      ]
+    },
+    {
+      "slug": "ensembles-homme-femme",
+      "name": "Ensembles homme-femme",
+      "position": 7,
+      "univers": [
+        "femme",
+        "homme"
+      ]
+    },
+    {
+      "slug": "costumes-africains",
+      "name": "Costumes africains",
+      "position": 8,
+      "univers": [
+        "homme"
+      ]
+    },
+    {
+      "slug": "ensembles-homme",
+      "name": "Ensembles homme",
+      "position": 9,
+      "univers": [
+        "homme"
+      ]
+    },
+    {
+      "slug": "ensembles-veste",
+      "name": "Ensembles veste courte",
+      "position": 10,
+      "univers": [
+        "homme"
+      ]
+    },
+    {
+      "slug": "chemises-homme",
+      "name": "Chemises homme",
+      "position": 11,
+      "univers": [
+        "homme"
+      ]
+    },
+    {
+      "slug": "tee-shirts",
+      "name": "Tee-shirts",
+      "position": 12,
+      "univers": [
+        "homme"
+      ]
+    },
+    {
+      "slug": "chaussures",
+      "name": "Chaussures",
+      "position": 13,
+      "univers": [
+        "accessoires"
+      ]
+    },
+    {
+      "slug": "casquettes",
+      "name": "Casquettes",
+      "position": 14,
+      "univers": [
+        "accessoires"
+      ]
+    },
+    {
+      "slug": "lunettes",
+      "name": "Lunettes",
+      "position": 15,
+      "univers": [
+        "accessoires"
+      ]
+    }
+  ],
+  "products": [
+    {
+      "slug": "robe-midi-gris-anthracite-a-ceinture",
+      "name": "Robe midi gris anthracite à ceinture",
+      "price": 10000,
+      "category": "robes",
+      "position": 1,
+      "status": "publie",
+      "photo": "robe-midi-gris-anthracite-a-ceinture.webp",
+      "views": [],
+      "source": "whatsapp",
+      "width": 592,
+      "height": 1280
+    },
+    {
+      "slug": "robe-portefeuille-marron",
+      "name": "Robe portefeuille marron",
+      "price": 10000,
+      "category": "robes",
+      "position": 2,
+      "status": "publie",
+      "photo": "robe-portefeuille-marron.webp",
+      "views": [],
+      "source": "whatsapp",
+      "width": 592,
+      "height": 1280
+    },
+    {
+      "slug": "robe-evasee-bleu-marine",
+      "name": "Robe évasée bleu marine",
+      "price": 10000,
+      "category": "robes",
+      "position": 3,
+      "status": "publie",
+      "photo": "robe-evasee-bleu-marine.webp",
+      "views": [],
+      "source": "whatsapp",
+      "width": 592,
+      "height": 1280
+    },
+    {
+      "slug": "robe-longue-ivoire-sans-manches",
+      "name": "Robe longue ivoire sans manches",
+      "price": 10000,
+      "category": "robes",
+      "position": 4,
+      "status": "publie",
+      "photo": "robe-longue-ivoire-sans-manches.webp",
+      "views": [],
+      "source": "whatsapp",
+      "width": 592,
+      "height": 1132
+    },
+    {
+      "slug": "robe-midi-bleu-marine-cintree",
+      "name": "Robe midi bleu marine cintrée",
+      "price": 10000,
+      "category": "robes",
+      "position": 5,
+      "status": "publie",
+      "photo": "robe-midi-bleu-marine-cintree.webp",
+      "views": [],
+      "source": "whatsapp",
+      "width": 592,
+      "height": 1280
+    },
+    {
+      "slug": "robe-evasee-gris-anthracite-sans-manches",
+      "name": "Robe évasée gris anthracite sans manches",
+      "price": 10000,
+      "category": "robes",
+      "position": 6,
+      "status": "publie",
+      "photo": "robe-evasee-gris-anthracite-sans-manches.webp",
+      "views": [],
+      "source": "whatsapp",
+      "width": 592,
+      "height": 1280
+    },
+    {
+      "slug": "jupe-longue-kaki",
+      "name": "Jupe longue kaki",
+      "price": 5000,
+      "category": "jupes",
+      "position": 1,
+      "status": "publie",
+      "photo": "jupe-longue-kaki.webp",
+      "views": [],
+      "source": "whatsapp",
+      "width": 868,
+      "height": 1280
+    },
+    {
+      "slug": "jupe-longue-marron",
+      "name": "Jupe longue marron",
+      "price": 5000,
+      "category": "jupes",
+      "position": 2,
+      "status": "publie",
+      "photo": "jupe-longue-marron.webp",
+      "views": [],
+      "source": "whatsapp",
+      "width": 944,
+      "height": 1280
+    },
+    {
+      "slug": "jupe-evasee-grise-boutonnee",
+      "name": "Jupe évasée grise boutonnée",
+      "price": 5000,
+      "category": "jupes",
+      "position": 3,
+      "status": "publie",
+      "photo": "jupe-evasee-grise-boutonnee.webp",
+      "views": [],
+      "source": "whatsapp",
+      "width": 972,
+      "height": 1280
+    },
+    {
+      "slug": "jupe-evasee-noire-a-boutons",
+      "name": "Jupe évasée noire à boutons",
+      "price": 5000,
+      "category": "jupes",
+      "position": 4,
+      "status": "publie",
+      "photo": "jupe-evasee-noire-a-boutons.webp",
+      "views": [],
+      "source": "whatsapp",
+      "width": 900,
+      "height": 1280
+    },
+    {
+      "slug": "jupe-evasee-marron-a-boutons",
+      "name": "Jupe évasée marron à boutons",
+      "price": 5000,
+      "category": "jupes",
+      "position": 5,
+      "status": "publie",
+      "photo": "jupe-evasee-marron-a-boutons.webp",
+      "views": [],
+      "source": "whatsapp",
+      "width": 880,
+      "height": 1280
+    },
+    {
+      "slug": "jupe-plissee-beige",
+      "name": "Jupe plissée beige",
+      "price": 5000,
+      "category": "jupes",
+      "position": 6,
+      "status": "publie",
+      "photo": "jupe-plissee-beige.webp",
+      "views": [],
+      "source": "whatsapp",
+      "width": 866,
+      "height": 1280
+    },
+    {
+      "slug": "jupe-trapeze-grege",
+      "name": "Jupe trapèze grège",
+      "price": 5000,
+      "category": "jupes",
+      "position": 7,
+      "status": "publie",
+      "photo": "jupe-trapeze-grege.webp",
+      "views": [],
+      "source": "whatsapp",
+      "width": 856,
+      "height": 1165
+    },
+    {
+      "slug": "jupe-drapee-marron",
+      "name": "Jupe drapée marron",
+      "price": 5000,
+      "category": "jupes",
+      "position": 8,
+      "status": "publie",
+      "photo": "jupe-drapee-marron.webp",
+      "views": [],
+      "source": "whatsapp",
+      "width": 936,
+      "height": 1280
+    },
+    {
+      "slug": "chemise-beige-a-empiecement",
+      "name": "Chemise beige à empiècement",
+      "price": 7000,
+      "category": "chemises-homme",
+      "position": 1,
+      "status": "publie",
+      "photo": "chemise-beige-a-empiecement.webp",
+      "views": [],
+      "source": "whatsapp",
+      "width": 1004,
+      "height": 1280
+    },
+    {
+      "slug": "chemise-kaki-a-col-ouvert",
+      "name": "Chemise kaki à col ouvert",
+      "price": 7000,
+      "category": "chemises-homme",
+      "position": 2,
+      "status": "brouillon",
+      "photo": "chemise-kaki-a-col-ouvert.webp",
+      "views": [],
+      "source": "whatsapp",
+      "width": 834,
+      "height": 1280,
+      "alert": "Étiquette Zara visible"
+    },
+    {
+      "slug": "chemise-grise-a-plis",
+      "name": "Chemise grise à plis",
+      "price": 7000,
+      "category": "chemises-homme",
+      "position": 3,
+      "status": "publie",
+      "photo": "chemise-grise-a-plis.webp",
+      "views": [],
+      "source": "whatsapp",
+      "width": 882,
+      "height": 1280
+    },
+    {
+      "slug": "chemise-claire-a-patte-ondulee",
+      "name": "Chemise claire à patte ondulée",
+      "price": 7000,
+      "category": "chemises-homme",
+      "position": 4,
+      "status": "publie",
+      "photo": "chemise-claire-a-patte-ondulee.webp",
+      "views": [],
+      "source": "whatsapp",
+      "width": 994,
+      "height": 1280
+    },
+    {
+      "slug": "chemise-beige-a-col-officier",
+      "name": "Chemise beige à col officier",
+      "price": 7000,
+      "category": "chemises-homme",
+      "position": 5,
+      "status": "publie",
+      "photo": "chemise-beige-a-col-officier.webp",
+      "views": [],
+      "source": "whatsapp",
+      "width": 1048,
+      "height": 1280
+    },
+    {
+      "slug": "chemise-ivoire-a-boutonnage-oblique",
+      "name": "Chemise ivoire à boutonnage oblique",
+      "price": 7000,
+      "category": "chemises-homme",
+      "position": 6,
+      "status": "publie",
+      "photo": "chemise-ivoire-a-boutonnage-oblique.webp",
+      "views": [],
+      "source": "whatsapp",
+      "width": 980,
+      "height": 1280
+    },
+    {
+      "slug": "chemise-rayee-bleu-et-blanc",
+      "name": "Chemise rayée bleu et blanc",
+      "price": 7000,
+      "category": "chemises-homme",
+      "position": 7,
+      "status": "publie",
+      "photo": "chemise-rayee-bleu-et-blanc.webp",
+      "views": [],
+      "source": "pdf",
+      "width": 363,
+      "height": 500
+    },
+    {
+      "slug": "chemise-col-tunisien-bleu-clair",
+      "name": "Chemise col tunisien bleu clair",
+      "price": 7000,
+      "category": "chemises-homme",
+      "position": 8,
+      "status": "publie",
+      "photo": "chemise-col-tunisien-bleu-clair.webp",
+      "views": [],
+      "source": "pdf",
+      "width": 379,
+      "height": 500
+    },
+    {
+      "slug": "haut-jaune-a-basque",
+      "name": "Haut jaune à basque",
+      "price": 5000,
+      "category": "blazers-hauts",
+      "position": 1,
+      "status": "publie",
+      "photo": "haut-jaune-a-basque.webp",
+      "views": [],
+      "source": "whatsapp",
+      "width": 980,
+      "height": 1280
+    },
+    {
+      "slug": "blazer-blanc-sans-manches-avec-ceinture",
+      "name": "Blazer blanc sans manches avec ceinture",
+      "price": 5000,
+      "category": "blazers-hauts",
+      "position": 2,
+      "status": "publie",
+      "photo": "blazer-blanc-sans-manches-avec-ceinture.webp",
+      "views": [],
+      "source": "whatsapp",
+      "width": 1106,
+      "height": 1280
+    },
+    {
+      "slug": "blazer-blanc-a-col-large-et-boutons-dores",
+      "name": "Blazer blanc à col large et boutons dorés",
+      "price": 5000,
+      "category": "blazers-hauts",
+      "position": 3,
+      "status": "publie",
+      "photo": "blazer-blanc-a-col-large-et-boutons-dores.webp",
+      "views": [],
+      "source": "whatsapp",
+      "width": 954,
+      "height": 1280
+    },
+    {
+      "slug": "blazer-noir-cintre-sans-manches",
+      "name": "Blazer noir cintré sans manches",
+      "price": 5000,
+      "category": "blazers-hauts",
+      "position": 4,
+      "status": "brouillon",
+      "photo": "blazer-noir-cintre-sans-manches.webp",
+      "views": [],
+      "source": "whatsapp",
+      "width": 838,
+      "height": 1280,
+      "alert": "Étiquette CIDER visible"
+    },
+    {
+      "slug": "veste-courte-bordeaux-a-manches-larges",
+      "name": "Veste courte bordeaux à manches larges",
+      "price": 5000,
+      "category": "blazers-hauts",
+      "position": 5,
+      "status": "publie",
+      "photo": "veste-courte-bordeaux-a-manches-larges.webp",
+      "views": [],
+      "source": "whatsapp",
+      "width": 894,
+      "height": 1280
+    },
+    {
+      "slug": "haut-noir-croise-a-nouer",
+      "name": "Haut noir croisé à nouer",
+      "price": 5000,
+      "category": "blazers-hauts",
+      "position": 6,
+      "status": "publie",
+      "photo": "haut-noir-croise-a-nouer.webp",
+      "views": [],
+      "source": "whatsapp",
+      "width": 862,
+      "height": 1280
+    },
+    {
+      "slug": "haut-beige-a-bretelles-nouees",
+      "name": "Haut beige à bretelles nouées",
+      "price": 5000,
+      "category": "blazers-hauts",
+      "position": 7,
+      "status": "publie",
+      "photo": "haut-beige-a-bretelles-nouees.webp",
+      "views": [],
+      "source": "pdf",
+      "width": 230,
+      "height": 470
+    },
+    {
+      "slug": "haut-rouge-sans-manches-boutonne",
+      "name": "Haut rouge sans manches boutonné",
+      "price": 5000,
+      "category": "blazers-hauts",
+      "position": 8,
+      "status": "publie",
+      "photo": "haut-rouge-sans-manches-boutonne.webp",
+      "views": [],
+      "source": "pdf",
+      "width": 232,
+      "height": 420
+    },
+    {
+      "slug": "ensemble-assorti-bleu",
+      "name": "Ensemble assorti bleu",
+      "price": 25000,
+      "category": "ensembles-homme-femme",
+      "position": 1,
+      "status": "publie",
+      "photo": "ensemble-assorti-bleu.webp",
+      "views": [],
+      "source": "whatsapp",
+      "width": 912,
+      "height": 1169
+    },
+    {
+      "slug": "ensemble-assorti-marron",
+      "name": "Ensemble assorti marron",
+      "price": 25000,
+      "category": "ensembles-homme-femme",
+      "position": 2,
+      "status": "publie",
+      "photo": "ensemble-assorti-marron.webp",
+      "views": [],
+      "source": "whatsapp",
+      "width": 912,
+      "height": 1169
+    },
+    {
+      "slug": "ensemble-assorti-blanc",
+      "name": "Ensemble assorti blanc",
+      "price": 25000,
+      "category": "ensembles-homme-femme",
+      "position": 3,
+      "status": "publie",
+      "photo": "ensemble-assorti-blanc.webp",
+      "views": [],
+      "source": "whatsapp",
+      "width": 998,
+      "height": 1280
+    },
+    {
+      "slug": "ensemble-confort-bicolore",
+      "name": "Ensemble confort bicolore",
+      "price": 12000,
+      "category": "ensembles-confort",
+      "position": 1,
+      "status": "publie",
+      "photo": "ensemble-confort-bicolore.webp",
+      "views": [
+        "ensemble-confort-bicolore-2.webp",
+        "ensemble-confort-bicolore-3.webp"
+      ],
+      "source": "whatsapp",
+      "width": 592,
+      "height": 1280
+    },
+    {
+      "slug": "ensemble-confort-vert-foret",
+      "name": "Ensemble confort vert forêt",
+      "price": 12000,
+      "category": "ensembles-confort",
+      "position": 2,
+      "status": "publie",
+      "photo": "ensemble-confort-vert-foret.webp",
+      "views": [
+        "ensemble-confort-vert-foret-2.webp"
+      ],
+      "source": "whatsapp",
+      "width": 806,
+      "height": 1080
+    },
+    {
+      "slug": "ensemble-confort-bordeaux",
+      "name": "Ensemble confort bordeaux",
+      "price": 12000,
+      "category": "ensembles-confort",
+      "position": 3,
+      "status": "publie",
+      "photo": "ensemble-confort-bordeaux.webp",
+      "views": [],
+      "source": "whatsapp",
+      "width": 806,
+      "height": 1080
+    },
+    {
+      "slug": "ensemble-confort-gris",
+      "name": "Ensemble confort gris",
+      "price": 12000,
+      "category": "ensembles-confort",
+      "position": 4,
+      "status": "publie",
+      "photo": "ensemble-confort-gris.webp",
+      "views": [],
+      "source": "whatsapp",
+      "width": 806,
+      "height": 1080
+    },
+    {
+      "slug": "ensemble-confort-taupe-et-ecru",
+      "name": "Ensemble confort taupe et écru",
+      "price": 12000,
+      "category": "ensembles-confort",
+      "position": 5,
+      "status": "publie",
+      "photo": "ensemble-confort-taupe-et-ecru.webp",
+      "views": [],
+      "source": "v1",
+      "width": 864,
+      "height": 1247
+    },
+    {
+      "slug": "ensemble-beige",
+      "name": "Ensemble beige",
+      "price": 12000,
+      "category": "ensembles-femme",
+      "position": 1,
+      "status": "publie",
+      "photo": "ensemble-beige.webp",
+      "views": [
+        "ensemble-beige-2.webp"
+      ],
+      "source": "whatsapp",
+      "width": 843,
+      "height": 1264
+    },
+    {
+      "slug": "ensemble-ivoire",
+      "name": "Ensemble ivoire",
+      "price": 12000,
+      "category": "ensembles-femme",
+      "position": 2,
+      "status": "publie",
+      "photo": "ensemble-ivoire.webp",
+      "views": [],
+      "source": "whatsapp",
+      "width": 720,
+      "height": 1280
+    },
+    {
+      "slug": "tunique-bleue-et-pantalon-ecru",
+      "name": "Tunique bleue et pantalon écru",
+      "price": 12000,
+      "category": "ensembles-femme",
+      "position": 3,
+      "status": "publie",
+      "photo": "tunique-bleue-et-pantalon-ecru.webp",
+      "views": [],
+      "source": "whatsapp",
+      "width": 750,
+      "height": 1280
+    },
+    {
+      "slug": "ensemble-bleu-ciel",
+      "name": "Ensemble bleu ciel",
+      "price": 12000,
+      "category": "ensembles-femme",
+      "position": 4,
+      "status": "publie",
+      "photo": "ensemble-bleu-ciel.webp",
+      "views": [],
+      "source": "whatsapp",
+      "width": 592,
+      "height": 1280
+    },
+    {
+      "slug": "tunique-beige-et-pantalon-noir",
+      "name": "Tunique beige et pantalon noir",
+      "price": 12000,
+      "category": "ensembles-femme",
+      "position": 5,
+      "status": "publie",
+      "photo": "tunique-beige-et-pantalon-noir.webp",
+      "views": [],
+      "source": "whatsapp",
+      "width": 592,
+      "height": 977
+    },
+    {
+      "slug": "ensemble-jaune-pastel",
+      "name": "Ensemble jaune pastel",
+      "price": 12000,
+      "category": "ensembles-femme",
+      "position": 6,
+      "status": "publie",
+      "photo": "ensemble-jaune-pastel.webp",
+      "views": [],
+      "source": "whatsapp",
+      "width": 592,
+      "height": 1280
+    },
+    {
+      "slug": "tunique-prune-et-pantalon-clair",
+      "name": "Tunique prune et pantalon clair",
+      "price": 12000,
+      "category": "ensembles-femme",
+      "position": 7,
+      "status": "publie",
+      "photo": "tunique-prune-et-pantalon-clair.webp",
+      "views": [],
+      "source": "whatsapp",
+      "width": 592,
+      "height": 1001
+    },
+    {
+      "slug": "ensemble-brun-et-ecru",
+      "name": "Ensemble brun et écru",
+      "price": 12000,
+      "category": "ensembles-femme",
+      "position": 8,
+      "status": "publie",
+      "photo": "ensemble-brun-et-ecru.webp",
+      "views": [],
+      "source": "whatsapp",
+      "width": 592,
+      "height": 1015
+    },
+    {
+      "slug": "chemise-jaune-et-pantalon-chocolat",
+      "name": "Chemise jaune et pantalon chocolat",
+      "price": 12000,
+      "category": "ensembles-femme",
+      "position": 9,
+      "status": "publie",
+      "photo": "chemise-jaune-et-pantalon-chocolat.webp",
+      "views": [],
+      "source": "whatsapp",
+      "width": 592,
+      "height": 1280
+    },
+    {
+      "slug": "ensemble-vert-femme",
+      "name": "Ensemble vert femme",
+      "price": 12000,
+      "category": "ensembles-femme",
+      "position": 10,
+      "status": "publie",
+      "photo": "ensemble-vert-femme.webp",
+      "views": [],
+      "source": "whatsapp",
+      "width": 592,
+      "height": 1152
+    },
+    {
+      "slug": "chemise-ivoire-et-pantalon-chocolat",
+      "name": "Chemise ivoire et pantalon chocolat",
+      "price": 12000,
+      "category": "ensembles-femme",
+      "position": 11,
+      "status": "publie",
+      "photo": "chemise-ivoire-et-pantalon-chocolat.webp",
+      "views": [],
+      "source": "whatsapp",
+      "width": 592,
+      "height": 1280
+    },
+    {
+      "slug": "ensemble-bordeaux",
+      "name": "Ensemble bordeaux",
+      "price": 12000,
+      "category": "ensembles-femme",
+      "position": 12,
+      "status": "publie",
+      "photo": "ensemble-bordeaux.webp",
+      "views": [],
+      "source": "whatsapp",
+      "width": 592,
+      "height": 1004
+    },
+    {
+      "slug": "pantalon-taille-haute-noir",
+      "name": "Pantalon taille haute noir",
+      "price": 8000,
+      "category": "pantalons",
+      "position": 1,
+      "status": "publie",
+      "photo": "pantalon-taille-haute-noir.webp",
+      "views": [],
+      "source": "whatsapp",
+      "width": 616,
+      "height": 1080
+    },
+    {
+      "slug": "pantalon-croise-gris-chine",
+      "name": "Pantalon croisé gris chiné",
+      "price": 8000,
+      "category": "pantalons",
+      "position": 2,
+      "status": "publie",
+      "photo": "pantalon-croise-gris-chine.webp",
+      "views": [],
+      "source": "whatsapp",
+      "width": 618,
+      "height": 1080
+    },
+    {
+      "slug": "pantalon-large-bleu-denim",
+      "name": "Pantalon large bleu denim",
+      "price": 8000,
+      "category": "pantalons",
+      "position": 3,
+      "status": "publie",
+      "photo": "pantalon-large-bleu-denim.webp",
+      "views": [],
+      "source": "whatsapp",
+      "width": 1046,
+      "height": 1024
+    },
+    {
+      "slug": "pantalon-large-taupe",
+      "name": "Pantalon large taupe",
+      "price": 8000,
+      "category": "pantalons",
+      "position": 4,
+      "status": "publie",
+      "photo": "pantalon-large-taupe.webp",
+      "views": [],
+      "source": "whatsapp",
+      "width": 720,
+      "height": 1080
+    },
+    {
+      "slug": "pantalon-large-gris",
+      "name": "Pantalon large gris",
+      "price": 8000,
+      "category": "pantalons",
+      "position": 5,
+      "status": "publie",
+      "photo": "pantalon-large-gris.webp",
+      "views": [],
+      "source": "whatsapp",
+      "width": 800,
+      "height": 1066
+    },
+    {
+      "slug": "pantalon-raye-ecru",
+      "name": "Pantalon rayé écru",
+      "price": 8000,
+      "category": "pantalons",
+      "position": 6,
+      "status": "publie",
+      "photo": "pantalon-raye-ecru.webp",
+      "views": [],
+      "source": "whatsapp",
+      "width": 405,
+      "height": 539
+    },
+    {
+      "slug": "pantalon-croise-gris",
+      "name": "Pantalon croisé gris",
+      "price": 8000,
+      "category": "pantalons",
+      "position": 7,
+      "status": "publie",
+      "photo": "pantalon-croise-gris.webp",
+      "views": [],
+      "source": "whatsapp",
+      "width": 720,
+      "height": 1080
+    },
+    {
+      "slug": "pantalon-tailleur-beige",
+      "name": "Pantalon tailleur beige",
+      "price": 8000,
+      "category": "pantalons",
+      "position": 8,
+      "status": "publie",
+      "photo": "pantalon-tailleur-beige.webp",
+      "views": [],
+      "source": "whatsapp",
+      "width": 564,
+      "height": 846
+    },
+    {
+      "slug": "pantalon-blanc",
+      "name": "Pantalon blanc",
+      "price": 8000,
+      "category": "pantalons",
+      "position": 9,
+      "status": "publie",
+      "photo": "pantalon-blanc.webp",
+      "views": [],
+      "source": "pdf",
+      "width": 379,
+      "height": 500
+    },
+    {
+      "slug": "pantalon-large-marron",
+      "name": "Pantalon large marron",
+      "price": 8000,
+      "category": "pantalons",
+      "position": 10,
+      "status": "publie",
+      "photo": "pantalon-large-marron.webp",
+      "views": [],
+      "source": "pdf",
+      "width": 385,
+      "height": 501
+    },
+    {
+      "slug": "ensemble-gris-clair",
+      "name": "Ensemble gris clair",
+      "price": 15000,
+      "category": "ensembles-homme",
+      "position": 1,
+      "status": "publie",
+      "photo": "ensemble-gris-clair.webp",
+      "views": [],
+      "source": "whatsapp",
+      "width": 853,
+      "height": 1280
+    },
+    {
+      "slug": "ensemble-bleu",
+      "name": "Ensemble bleu",
+      "price": 15000,
+      "category": "ensembles-homme",
+      "position": 2,
+      "status": "publie",
+      "photo": "ensemble-bleu.webp",
+      "views": [
+        "ensemble-bleu-2.webp"
+      ],
+      "source": "whatsapp",
+      "width": 853,
+      "height": 1280
+    },
+    {
+      "slug": "ensemble-noir",
+      "name": "Ensemble noir",
+      "price": 15000,
+      "category": "ensembles-homme",
+      "position": 3,
+      "status": "publie",
+      "photo": "ensemble-noir.webp",
+      "views": [],
+      "source": "whatsapp",
+      "width": 853,
+      "height": 1280
+    },
+    {
+      "slug": "ensemble-blanc",
+      "name": "Ensemble blanc",
+      "price": 15000,
+      "category": "ensembles-homme",
+      "position": 4,
+      "status": "publie",
+      "photo": "ensemble-blanc.webp",
+      "views": [],
+      "source": "whatsapp",
+      "width": 853,
+      "height": 1280
+    },
+    {
+      "slug": "chemise-beige-et-pantalon-clair",
+      "name": "Chemise beige et pantalon clair",
+      "price": 15000,
+      "category": "ensembles-homme",
+      "position": 5,
+      "status": "publie",
+      "photo": "chemise-beige-et-pantalon-clair.webp",
+      "views": [],
+      "source": "whatsapp",
+      "width": 853,
+      "height": 1280
+    },
+    {
+      "slug": "ensemble-vert-homme",
+      "name": "Ensemble vert homme",
+      "price": 15000,
+      "category": "ensembles-homme",
+      "position": 6,
+      "status": "publie",
+      "photo": "ensemble-vert-homme.webp",
+      "views": [],
+      "source": "whatsapp",
+      "width": 853,
+      "height": 1280
+    },
+    {
+      "slug": "chemise-bleu-turquoise-et-pantalon",
+      "name": "Chemise bleu turquoise et pantalon",
+      "price": 15000,
+      "category": "ensembles-homme",
+      "position": 7,
+      "status": "publie",
+      "photo": "chemise-bleu-turquoise-et-pantalon.webp",
+      "views": [],
+      "source": "pdf",
+      "width": 304,
+      "height": 454
+    },
+    {
+      "slug": "chemise-bleu-petrole-et-pantalon-clair",
+      "name": "Chemise bleu pétrole et pantalon clair",
+      "price": 15000,
+      "category": "ensembles-homme",
+      "position": 8,
+      "status": "publie",
+      "photo": "chemise-bleu-petrole-et-pantalon-clair.webp",
+      "views": [
+        "chemise-bleu-petrole-et-pantalon-clair-2.webp"
+      ],
+      "source": "v1",
+      "width": 843,
+      "height": 1264
+    },
+    {
+      "slug": "ensemble-imprime-clair",
+      "name": "Ensemble imprimé clair",
+      "price": 15000,
+      "category": "ensembles-homme",
+      "position": 9,
+      "status": "publie",
+      "photo": "ensemble-imprime-clair.webp",
+      "views": [],
+      "source": "pdf",
+      "width": 304,
+      "height": 455
+    },
+    {
+      "slug": "chemise-claire-et-pantalon-bleu",
+      "name": "Chemise claire et pantalon bleu",
+      "price": 15000,
+      "category": "ensembles-homme",
+      "position": 10,
+      "status": "publie",
+      "photo": "chemise-claire-et-pantalon-bleu.webp",
+      "views": [],
+      "source": "pdf",
+      "width": 304,
+      "height": 454
+    },
+    {
+      "slug": "chemise-jaune-et-pantalon-ample",
+      "name": "Chemise jaune et pantalon ample",
+      "price": 15000,
+      "category": "ensembles-homme",
+      "position": 11,
+      "status": "publie",
+      "photo": "chemise-jaune-et-pantalon-ample.webp",
+      "views": [
+        "chemise-jaune-et-pantalon-ample-2.webp"
+      ],
+      "source": "v1",
+      "width": 843,
+      "height": 1264
+    },
+    {
+      "slug": "chemise-imprimee-et-pantalon-raye",
+      "name": "Chemise imprimée et pantalon rayé",
+      "price": 15000,
+      "category": "ensembles-homme",
+      "position": 12,
+      "status": "publie",
+      "photo": "chemise-imprimee-et-pantalon-raye.webp",
+      "views": [],
+      "source": "pdf",
+      "width": 341,
+      "height": 456
+    },
+    {
+      "slug": "costume-africain-rose",
+      "name": "Costume africain rose",
+      "price": 20000,
+      "category": "costumes-africains",
+      "position": 1,
+      "status": "publie",
+      "photo": "costume-africain-rose.webp",
+      "views": [
+        "costume-africain-rose-2.webp",
+        "costume-africain-rose-3.webp"
+      ],
+      "source": "whatsapp",
+      "width": 843,
+      "height": 1264
+    },
+    {
+      "slug": "costume-africain-noir",
+      "name": "Costume africain noir",
+      "price": 20000,
+      "category": "costumes-africains",
+      "position": 2,
+      "status": "publie",
+      "photo": "costume-africain-noir.webp",
+      "views": [
+        "costume-africain-noir-2.webp"
+      ],
+      "source": "whatsapp",
+      "width": 843,
+      "height": 1264
+    },
+    {
+      "slug": "costume-africain-beige",
+      "name": "Costume africain beige",
+      "price": 20000,
+      "category": "costumes-africains",
+      "position": 3,
+      "status": "publie",
+      "photo": "costume-africain-beige.webp",
+      "views": [],
+      "source": "whatsapp",
+      "width": 665,
+      "height": 896
+    },
+    {
+      "slug": "tenue-traditionnelle-blanche",
+      "name": "Tenue traditionnelle blanche",
+      "price": 20000,
+      "category": "costumes-africains",
+      "position": 4,
+      "status": "publie",
+      "photo": "tenue-traditionnelle-blanche.webp",
+      "views": [],
+      "source": "pdf",
+      "width": 300,
+      "height": 350
+    },
+    {
+      "slug": "ensemble-veste-courte-blanche",
+      "name": "Ensemble veste courte blanche",
+      "price": 20000,
+      "category": "ensembles-veste",
+      "position": 1,
+      "status": "publie",
+      "photo": "ensemble-veste-courte-blanche.webp",
+      "views": [],
+      "source": "pdf",
+      "width": 346,
+      "height": 500
+    },
+    {
+      "slug": "ensemble-veste-courte-marron",
+      "name": "Ensemble veste courte marron",
+      "price": 20000,
+      "category": "ensembles-veste",
+      "position": 2,
+      "status": "publie",
+      "photo": "ensemble-veste-courte-marron.webp",
+      "views": [],
+      "source": "pdf",
+      "width": 433,
+      "height": 474
+    },
+    {
+      "slug": "ensemble-veste-courte-bleu-marine",
+      "name": "Ensemble veste courte bleu marine",
+      "price": 20000,
+      "category": "ensembles-veste",
+      "position": 3,
+      "status": "publie",
+      "photo": "ensemble-veste-courte-bleu-marine.webp",
+      "views": [],
+      "source": "pdf",
+      "width": 433,
+      "height": 475
+    },
+    {
+      "slug": "costume-africain-blanc-de-lait",
+      "name": "Costume africain blanc de lait",
+      "price": 20000,
+      "category": "costumes-africains",
+      "position": 5,
+      "status": "publie",
+      "photo": "costume-africain-blanc-de-lait.webp",
+      "views": [],
+      "source": "v1",
+      "width": 1143,
+      "height": 1280
+    },
+    {
+      "slug": "ensemble-bleu-raye",
+      "name": "Ensemble bleu rayé",
+      "price": 15000,
+      "category": "ensembles-homme",
+      "position": 13,
+      "status": "publie",
+      "photo": "ensemble-bleu-raye.webp",
+      "views": [],
+      "source": "v1",
+      "width": 853,
+      "height": 1280
+    },
+    {
+      "slug": "ensemble-marron-raye",
+      "name": "Ensemble marron rayé",
+      "price": 15000,
+      "category": "ensembles-homme",
+      "position": 14,
+      "status": "publie",
+      "photo": "ensemble-marron-raye.webp",
+      "views": [],
+      "source": "v1",
+      "width": 720,
+      "height": 1080
+    },
+    {
+      "slug": "tee-shirt-blanc",
+      "name": "Tee-shirt blanc",
+      "price": 5000,
+      "category": "tee-shirts",
+      "position": 1,
+      "status": "publie",
+      "photo": "tee-shirt-blanc.webp",
+      "views": [],
+      "source": "v1",
+      "width": 720,
+      "height": 1080
+    },
+    {
+      "slug": "tee-shirt-bleu-marine",
+      "name": "Tee-shirt bleu marine",
+      "price": 5000,
+      "category": "tee-shirts",
+      "position": 2,
+      "status": "publie",
+      "photo": "tee-shirt-bleu-marine.webp",
+      "views": [],
+      "source": "v1",
+      "width": 720,
+      "height": 1080
+    },
+    {
+      "slug": "tee-shirt-rouge",
+      "name": "Tee-shirt rouge",
+      "price": 5000,
+      "category": "tee-shirts",
+      "position": 3,
+      "status": "publie",
+      "photo": "tee-shirt-rouge.webp",
+      "views": [],
+      "source": "v1",
+      "width": 720,
+      "height": 1080
+    },
+    {
+      "slug": "chaussures",
+      "name": "Chaussures",
+      "price": 15000,
+      "category": "chaussures",
+      "position": 1,
+      "status": "publie",
+      "photo": "chaussures.webp",
+      "views": [],
+      "source": "v1",
+      "width": 760,
+      "height": 760
+    },
+    {
+      "slug": "casquette-blanche",
+      "name": "Casquette blanche",
+      "price": 5000,
+      "category": "casquettes",
+      "position": 1,
+      "status": "publie",
+      "photo": "casquette-blanche.webp",
+      "views": [],
+      "source": "v1",
+      "width": 504,
+      "height": 504
+    },
+    {
+      "slug": "casquette-noire",
+      "name": "Casquette noire",
+      "price": 5000,
+      "category": "casquettes",
+      "position": 2,
+      "status": "publie",
+      "photo": "casquette-noire.webp",
+      "views": [],
+      "source": "v1",
+      "width": 1080,
+      "height": 1080
+    },
+    {
+      "slug": "lunettes-tebby",
+      "name": "Lunettes TEBBY",
+      "price": 5000,
+      "category": "lunettes",
+      "position": 1,
+      "status": "publie",
+      "photo": "lunettes-tebby.webp",
+      "views": [],
+      "source": "v1",
+      "width": 1080,
+      "height": 1080
+    },
+    {
+      "slug": "ensemble-unisexe-bleu",
+      "name": "Ensemble unisexe bleu",
+      "price": 15000,
+      "category": "ensembles-homme",
+      "position": 15,
+      "status": "publie",
+      "photo": "ensemble-unisexe-bleu.webp",
+      "views": [
+        "ensemble-unisexe-bleu-2.webp"
+      ],
+      "source": "v1",
+      "width": 643,
+      "height": 905
+    }
+  ],
+  "removed_seed_slugs": [
+    "ensemble-blanc-de-lait",
+    "ensemble-vert-et-jaune",
+    "ensemble-vert-et-jaune-modele-2",
+    "ensemble-vert",
+    "ensemble-vert-modele-2",
+    "ensemble-classe-femme",
+    "ensemble-jogging-femme",
+    "robe-beige",
+    "ensemble-unisexe-bleu-modele-1",
+    "ensemble-unisexe-bleu-modele-2",
+    "tee-shirt-noir"
+  ],
+  "sizes": {
+    "default": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "casquettes": [
+      "Taille unique"
+    ],
+    "lunettes": [
+      "Taille unique"
+    ],
+    "chaussures": [
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ]
+  }
+}

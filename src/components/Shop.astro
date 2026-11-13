@@ -1,0 +1,23 @@
+---
+import ProductCard from './ProductCard.astro';
+import type { Product } from '../lib/catalogue';
+
+interface Props {
+  title: string;
+  intro: string;
+  products: Product[];
+  links: { href: string; name: string; current?: boolean }[];
+}
+
+const { title, intro, products, links } = Astro.props;
+---
+<header class="shop-head">
+  <h1>{title}</h1>
+  <p class="shop-intro">{intro}</p>
+</header>
+<nav class="filters" aria-label="Rubriques">
+  {links.map((l) => <a href={l.href} aria-current={l.current ? 'page' : undefined}>{l.name}</a>)}
+</nav>
+<div class="grid">
+  {products.map((p, i) => <ProductCard product={p} eager={i < 4} />)}
+</div>

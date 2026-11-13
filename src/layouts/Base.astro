@@ -1,0 +1,98 @@
+---
+import '@fontsource/instrument-serif/400.css';
+import '@fontsource/instrument-serif/400-italic.css';
+import '@fontsource-variable/hanken-grotesk/wght.css';
+import '../styles/site.css';
+import CartButton from '../islands/CartButton';
+import CartDrawer from '../islands/CartDrawer';
+import { getCatalogue } from '../lib/catalogue';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+}
+
+const { title, description, image } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = image ? new URL(image, Astro.site) : undefined;
+const sales = import.meta.env.PUBLIC_WHATSAPP_SALES;
+const question = encodeURIComponent('Bonjour TEBBY, j\'ai une question.');
+const { rates } = await getCatalogue();
+---
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#0c0a08" />
+    <meta name="google-site-verification" content="UmVAyaVMtIF9Ehahc8qQJ0GQKgs87AhaxHEKYfViTGo" />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:site_name" content="TEBBY" />
+    <meta property="og:locale" content="fr_SN" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    {ogImage && <meta property="og:image" content={ogImage} />}
+    <meta name="twitter:card" content="summary_large_image" />
+    <slot name="head" />
+  </head>
+  <body>
+    <a class="skip" href="#contenu">Aller au contenu</a>
+    <header class="site-header">
+      <a class="logo" href="/" aria-label="TEBBY, accueil">TEBBY</a>
+      <nav aria-label="Principale">
+        <a href="/boutique/femme">Femme</a>
+        <a href="/boutique/homme">Homme</a>
+        <a href="/boutique/accessoires">Accessoires</a>
+      </nav>
+      <div class="header-end"><CartButton client:load /></div>
+    </header>
+
+    <main id="contenu"><slot /></main>
+
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <div>
+          <p class="footer-kicker">La marque qui rassure</p>
+          <p>Petit Mbao, Sénégal</p>
+        </div>
+        <div>
+          <p class="footer-kicker">WhatsApp et téléphone</p>
+          <p><a href={`https://wa.me/${sales}`}>+221 78 189 83 85</a></p>
+          <p><a href="https://wa.me/221771493449">+221 77 149 34 49</a></p>
+        </div>
+        <div>
+          <p class="footer-kicker">La boutique</p>
+          <p><a href="/boutique">Toutes les pièces</a></p>
+          <p><a href="/informations">Livraison, paiement et retours</a></p>
+        </div>
+      </div>
+      <a class="float-wa" href={`https://wa.me/${sales}?text=${question}`} target="_blank" rel="noreferrer" aria-label="Une question ? Écrivez-nous sur WhatsApp">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3Z" /></svg>
+    </a>
+      <p class="footer-legal">© {new Date().getFullYear()} TEBBY. Tous droits réservés.</p>
+    </footer>
+    <CartDrawer client:load rates={rates} />
+
+    <script>
+      // Les éléments restent visibles au repos : l'animation part de leur entrée à l'écran.
+      if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        const seen = new IntersectionObserver((entries) => {
+          for (const entry of entries) {
+            if (!entry.isIntersecting) continue;
+            seen.unobserve(entry.target);
+            const timing = { duration: 1000, easing: 'cubic-bezier(.2,.7,.2,1)' };
+            if (entry.target.hasAttribute('data-revele')) entry.target.animate([{ clipPath: 'inset(0 0 100% 0)' }, { clipPath: 'inset(0)' }], timing);
+            else entry.target.animate([{ opacity: 0, transform: 'translateY(28px)' }, { opacity: 1, transform: 'none' }], timing);
+          }
+        }, { rootMargin: '0px 0px 4% 0px' });
+        document.querySelectorAll('[data-monte], [data-revele]').forEach((el) => seen.observe(el));
+      }
+    </script>
+  </body>
+</html>

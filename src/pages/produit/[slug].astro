@@ -1,0 +1,87 @@
+---
+import { getImage } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import Photo from '../../components/Photo.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import AddToCart from '../../islands/AddToCart';
+import { getCatalogue } from '../../lib/catalogue';
+import { cropPosition, focus } from '../../lib/cadrage';
+import { fcfa } from '../../lib/format';
+import { shareImage } from '../../lib/partage';
+
+export async function getStaticPaths() {
+  const { products } = await getCatalogue();
+  return products.map((p) => ({ params: { slug: p.slug }, props: { slug: p.slug } }));
+}
+
+const { slug } = Astro.props;
+const { products, universOf } = await getCatalogue();
+const product = products.find((p) => p.slug === slug)!;
+const others = products.filter((p) => p.category_id === product.category_id && p.id !== product.id).slice(0, 4);
+
+const thumb = await getImage({ src: product.image, width: 200, height: 267, fit: 'cover', position: cropPosition(product), format: 'webp' });
+const share = await shareImage(product);
+
+const sales = import.meta.env.PUBLIC_WHATSAPP_SALES;
+const pageUrl = new URL(`/produit/${product.slug}`, Astro.site).href;
+const question = encodeURIComponent(`Bonjour TEBBY, j'ai une question sur ${product.name} (N° ${product.number}) : ${pageUrl}`);
+const sizes = product.product_variants.map(({ id, size, stock }) => ({ id, size, stock }));
+const available = sizes.some((s) => s.stock === null || s.stock > 0);
+const sizeRange = sizes.length > 1 ? `${sizes[0].size} à ${sizes[sizes.length - 1].size}` : sizes[0]?.size;
+const description = product.description || `${product.name}, ${product.category.name.toLowerCase()} TEBBY à ${fcfa(product.price)}. Tailles ${sizeRange}. Paiement à la livraison ou par Wave.`;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: product.name,
+  description,
+  sku: `TEBBY-${product.number}`,
+  brand: { '@type': 'Brand', name: 'TEBBY' },
+  image: new URL(share, Astro.site).href,
+  offers: {
+    '@type': 'Offer',
+    url: pageUrl,
+    price: product.price,
+    priceCurrency: 'XOF',
+    availability: available ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
+  },
+};
+const crumbs = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: product.category.name, item: new URL(`/boutique/${product.category.slug}`, Astro.site).href },
+    { '@type': 'ListItem', position: 2, name: product.name, item: pageUrl },
+  ],
+};
+---
+<Base title={`${product.name} | TEBBY`} description={description} image={share}>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(schema).replace(/</g, '\\u003c')} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(crumbs).replace(/</g, '\\u003c')} />
+  <article class="product">
+    <div class="gallery" tabindex="0" role="group" aria-label={`Photos de ${product.name}`}>
+      <Photo src={product.image} alt={product.name} sizes="(min-width: 900px) 52vw, 100vw" eager style={`view-transition-name: p-${product.id}; object-position: ${focus(product)}`} />
+      {product.views.map((view, i) => <Photo src={view} alt={`${product.name}, vue ${i + 2}`} sizes="(min-width: 900px) 52vw, 100vw" style={`object-position: ${focus(product)}`} />)}
+    </div>
+    <div class="details">
+      <nav class="crumbs" aria-label="Fil d'Ariane"><a href={`/boutique/${universOf(product.category.slug)?.slug ?? ''}`}>{universOf(product.category.slug)?.name ?? 'Boutique'}</a> / <a href={`/boutique/${product.category.slug}`}>{product.category.name}</a></nav>
+      <p class="tag-no">Réf. {product.number}</p>
+      <h1>{product.name}</h1>
+      <p class="product-price">{fcfa(product.price)}</p>
+      {product.description && <p class="product-desc">{product.description}</p>}
+      <AddToCart client:load slug={product.slug} name={product.name} price={product.price} image={thumb.src} sizes={sizes} />
+      <a class="ask" href={`https://wa.me/${sales}?text=${question}`} target="_blank" rel="noreferrer">Une question sur cette pièce ? Écrivez-nous</a>
+      <dl class="mini-label">
+        <div><dt>Paiement</dt><dd>À la livraison ou Wave</dd></div>
+        <div><dt>Confirmation</dt><dd>Avec l'équipe, sur WhatsApp</dd></div>
+        <div><dt>Détails</dt><dd><a href="/informations">Livraison et retours</a></dd></div>
+      </dl>
+    </div>
+  </article>
+  {others.length > 0 && (
+    <section class="related">
+      <h2>Dans la même rubrique</h2>
+      <div class="grid">{others.map((p) => <ProductCard product={p} />)}</div>
+    </section>
+  )}
+</Base>

@@ -1,0 +1,15 @@
+---
+import Base from '../../layouts/Base.astro';
+import Shop from '../../components/Shop.astro';
+import { getCatalogue } from '../../lib/catalogue';
+import { shareImage } from '../../lib/partage';
+
+const { products, rubriques, univers, universOf } = await getCatalogue();
+const links = [
+  ...univers.map((u) => ({ href: `/boutique/${u.slug}`, name: u.name })),
+  ...rubriques.filter((r) => !universOf(r.slug)).map((r) => ({ href: `/boutique/${r.slug}`, name: r.name })),
+];
+---
+<Base title="Boutique | TEBBY" image={await shareImage(products[0])} description={`Les ${products.length} pièces TEBBY : robes, jupes, ensembles, costumes africains, chemises et accessoires. Tailles S à XXL.`}>
+  <Shop title="Toute la boutique" intro={`${products.length} pièces, tailles S à XXL.`} products={products} links={links} />
+</Base>

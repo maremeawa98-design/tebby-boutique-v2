@@ -1,0 +1,33 @@
+---
+import Base from '../../layouts/Base.astro';
+import Shop from '../../components/Shop.astro';
+import { getCatalogue } from '../../lib/catalogue';
+import { fcfa } from '../../lib/format';
+import { shareImage } from '../../lib/partage';
+
+export async function getStaticPaths() {
+  const { rubriques, univers } = await getCatalogue();
+  return [...univers, ...rubriques].map((r) => ({ params: { categorie: r.slug }, props: { slug: r.slug } }));
+}
+
+const { slug } = Astro.props;
+const { rubriques, univers: tous, universOf } = await getCatalogue();
+const pieces = (n: number) => `${n} ${n > 1 ? 'pièces' : 'pièce'}`;
+
+const page = tous.find((u) => u.slug === slug);
+const rubrique = rubriques.find((r) => r.slug === slug);
+const univers = page ?? universOf(slug);
+const inUnivers = univers ? rubriques.filter((r) => univers.rubriques.includes(r.slug)) : rubriques;
+
+const title = page?.name ?? rubrique!.name;
+const products = page ? inUnivers.flatMap((r) => r.products) : rubrique!.products;
+const from = Math.min(...products.map((p) => p.price));
+const share = await shareImage(products[0]);
+const links = [
+  ...(univers ? [{ href: `/boutique/${univers.slug}`, name: 'Tout', current: Boolean(page) }] : [{ href: '/boutique', name: 'Tout' }]),
+  ...inUnivers.map((r) => ({ href: `/boutique/${r.slug}`, name: r.name, current: r.slug === slug })),
+];
+---
+<Base title={`${title} dès ${fcfa(from)} | TEBBY`} image={share} description={`${title} TEBBY dès ${fcfa(from)}. Commandez en ligne, confirmation sur WhatsApp, paiement à la livraison ou par Wave.`}>
+  <Shop title={title} intro={`${pieces(products.length)}, dès ${fcfa(from)}.`} products={products} links={links} />
+</Base>

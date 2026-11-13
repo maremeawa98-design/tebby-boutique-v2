@@ -1,0 +1,41 @@
+---
+import Base from '../layouts/Base.astro';
+import { fcfa } from '../lib/format';
+import { getCatalogue } from '../lib/catalogue';
+const { rates } = await getCatalogue();
+---
+<Base title="Livraison, paiement et retours | TEBBY" description="Tailles, zones et tarifs de livraison, paiement à la livraison ou par Wave, droit de rétractation : tout ce qu'il faut savoir avant de commander chez TEBBY.">
+  <div class="info">
+    <header class="shop-head">
+      <h1>Livraison, paiement et retours</h1>
+    </header>
+    <section>
+      <h2>Commander</h2>
+      <p>Ajoutez vos pièces au panier, renseignez vos coordonnées et créez votre commande. Vous recevez un numéro et un récapitulatif à envoyer sur WhatsApp. L'équipe vous répond pour confirmer la disponibilité, le total et la livraison.</p>
+    </section>
+    <section>
+      <h2>Livraison</h2>
+      <p>Les frais sont confirmés avec vous avant l'expédition.</p>
+      <table>
+        <thead><tr><th scope="col">Zone</th><th scope="col">Secteurs</th><th scope="col">Tarif</th></tr></thead>
+        <tbody>{rates.map((r) => <tr><td>{r.label}</td><td>{r.areas}</td><td>{fcfa(r.fee)}</td></tr>)}</tbody>
+      </table>
+    </section>
+    <section>
+      <h2>Paiement</h2>
+      <p>Vous payez à la livraison ou par Wave. Aucun paiement n'est demandé sur le site.</p>
+    </section>
+    <section>
+      <h2>Tailles</h2>
+      <p>Les vêtements sont proposés du S au XXL, et les chaussures du 39 au 45. En cas de doute, écrivez-nous avant de commander.</p>
+    </section>
+    <section>
+      <h2>Changer d'avis</h2>
+      <p>Vous disposez de sept jours ouvrables après la réception pour vous rétracter, sans avoir à donner de motif. Les sommes versées sont remboursées dans un délai de quinze jours. Contactez-nous sur WhatsApp pour organiser le retour.</p>
+    </section>
+    <section>
+      <h2>Nous contacter</h2>
+      <p>TEBBY, Petit Mbao, Sénégal.<br />WhatsApp et téléphone : <a href="https://wa.me/221781898385">+221 78 189 83 85</a> et <a href="https://wa.me/221771493449">+221 77 149 34 49</a>.</p>
+    </section>
+  </div>
+</Base>

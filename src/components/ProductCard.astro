@@ -1,0 +1,21 @@
+---
+import Photo from './Photo.astro';
+import { focus } from '../lib/cadrage';
+import { fcfa } from '../lib/format';
+import type { Product } from '../lib/catalogue';
+
+interface Props {
+  product: Product;
+  sizes?: string;
+  eager?: boolean;
+}
+
+const { product, sizes = '(min-width: 1000px) 24vw, (min-width: 640px) 32vw, 48vw', eager = false } = Astro.props;
+---
+<a class="card" href={`/produit/${product.slug}`}>
+  <span class="card-photo" data-revele>
+    <Photo src={product.image} alt={product.name} sizes={sizes} eager={eager} style={`view-transition-name: p-${product.id}; object-position: ${focus(product)}`} />
+  </span>
+  <span class="card-name">{product.name}</span>
+  <span class="card-price">{fcfa(product.price)}</span>
+</a>
