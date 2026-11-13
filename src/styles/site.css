@@ -268,6 +268,9 @@ body:has(.buy-bar) .float-wa { display: none; }
 .sum-total dt { color: var(--ivoire); font-weight: 600; }
 .sum-total dd { color: var(--or); font-weight: 600; }
 .fine { color: var(--sable); font-size: 0.88rem; text-align: center; }
+.fine a { color: var(--ivoire); }
+.robot:empty { display: none; }
+.a-completer { background: color-mix(in srgb, var(--or) 18%, transparent); color: var(--or-clair); padding-inline: 0.2em; }
 .empty { display: grid; gap: 1.2rem; justify-items: start; padding: 2rem 0; }
 .empty p { font-family: var(--display); font-size: 1.9rem; line-height: 1.1; }
 .sent { display: grid; gap: 1rem; padding-bottom: 2rem; }

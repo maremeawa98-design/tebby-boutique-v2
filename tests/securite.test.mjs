@@ -13,8 +13,12 @@ const stranger = client();
 const admin = client();
 const email = `visiteur-${Date.now()}@test.local`;
 const customer = ['Awa Diop', '77 123 45 67', 'Petit Mbao', '', 'livraison'];
-const order = (db, items, c = customer) =>
-  db.rpc('create_order', { p_name: c[0], p_phone: c[1], p_area: c[2], p_note: c[3], p_payment: c[4], p_items: items });
+// create_order n'est plus ouvert au navigateur : les tests l'appellent comme la fonction « commander ».
+// Chaque commande a son propre numéro, pour ne pas buter sur la limite de 5 par heure.
+let phones = 0;
+const fresh = () => [customer[0], `70 ${String(++phones).padStart(7, '0')}`, ...customer.slice(2)];
+const order = (_db, items, c = fresh()) =>
+  service.rpc('create_order', { p_name: c[0], p_phone: c[1], p_area: c[2], p_note: c[3], p_payment: c[4], p_items: items });
 
 let variant;
 let product;
@@ -74,7 +78,7 @@ test('le prix vient de la base, pas du navigateur', async () => {
 });
 
 test('le téléphone local reçoit l\'indicatif du Sénégal', async () => {
-  const { data } = await order(anon, [{ variant_id: variant, quantity: 1 }]);
+  const { data } = await order(anon, [{ variant_id: variant, quantity: 1 }], customer);
   const { data: row } = await service.from('orders').select('customer_phone').eq('number', data.number).single();
   assert.equal(row.customer_phone, '221771234567');
 });
@@ -89,7 +93,7 @@ test('les commandes invalides sont refusées sans laisser de trace', async () =>
     [[{ variant_id: variant, quantity: -1 }]],
     [[{ variant_id: 999999, quantity: 1 }]],
     [[{ variant_id: variant, quantity: 6 }]],
-    [[{ variant_id: variant, quantity: 1 }], ['A', ...customer.slice(1)]],
+    [[{ variant_id: variant, quantity: 1 }], ['A', ...fresh().slice(1)]],
     [[{ variant_id: variant, quantity: 1 }], [customer[0], '123', ...customer.slice(2)]],
   ];
   for (const [items, c] of cases) assert.ok((await order(anon, items, c)).error, JSON.stringify(items));
@@ -245,4 +249,48 @@ test('l\'alerte en direct n\'arrive qu\'à l\'équipe', async () => {
   assert.equal(other.seen.length, 0);
   assert.equal(visitor.seen.length, 0);
   assert.equal(curious.length, 0);
+});
+
+const call = async (name, db, body) => {
+  const token = db ? (await db.auth.getSession()).data.session?.access_token : null;
+  const res = await fetch(`${url}/functions/v1/${name}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', apikey: process.env.PUBLIC_SUPABASE_KEY, ...(token ? { Authorization: `Bearer ${token}` } : {}) },
+    body: JSON.stringify(body),
+  });
+  return { status: res.status, body: await res.json() };
+};
+
+test('le navigateur ne peut plus créer de commande sans passer la vérification anti-robot', async () => {
+  const direct = { p_name: 'Bot', p_phone: '771112233', p_area: 'Mbao', p_note: '', p_payment: 'livraison', p_items: [{ variant_id: variant, quantity: 1 }] };
+  assert.ok((await anon.rpc('create_order', direct)).error);
+  assert.ok((await stranger.rpc('create_order', direct)).error);
+  await service.from('product_variants').update({ stock: null }).eq('id', variant);
+  const body = { name: 'Awa Diop', phone: '70 9000001', area: 'Petit Mbao', payment: 'livraison', items: [{ variant_id: variant, quantity: 1 }] };
+  assert.equal((await call('commander', null, body)).status, 403);
+  assert.equal((await call('commander', null, { ...body, token: '' })).status, 403);
+  // La clé secrète de test de Cloudflare accepte n'importe quel jeton.
+  const ok = await call('commander', null, { ...body, token: 'XXXX.DUMMY.TOKEN.XXXX' });
+  assert.equal(ok.status, 200);
+  assert.match(ok.body.number, /^TB-\d+$/);
+  const wrong = await call('commander', null, { ...body, phone: '123', token: 'XXXX.DUMMY.TOKEN.XXXX' });
+  assert.equal(wrong.status, 400);
+  assert.match(wrong.body.error, /téléphone/i);
+});
+
+test('un même numéro ne peut pas passer plus de 5 commandes par heure', async () => {
+  await service.from('product_variants').update({ stock: null }).eq('id', variant);
+  const c = [customer[0], '70 8000001', ...customer.slice(2)];
+  for (let i = 0; i < 5; i++) assert.ifError((await order(anon, [{ variant_id: variant, quantity: 1 }], c)).error);
+  const { error } = await order(anon, [{ variant_id: variant, quantity: 1 }], c);
+  assert.match(error?.message ?? '', /Trop de commandes/);
+});
+
+test('seule l\'équipe peut lancer la mise à jour du site, une fois toutes les 2 minutes', async () => {
+  assert.equal((await call('publier', null, {})).status, 401);
+  assert.equal((await call('publier', stranger, {})).status, 403);
+  assert.ok((await stranger.from('site_builds').select('id')).data?.length === 0);
+  const first = await call('publier', admin, {});
+  assert.ok([200, 502, 503].includes(first.status), JSON.stringify(first));
+  if (first.status === 200) assert.equal((await call('publier', admin, {})).status, 429);
 });

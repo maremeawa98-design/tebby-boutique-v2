@@ -1,0 +1,14 @@
+---
+import Base from '../layouts/Base.astro';
+interface Props { title: string; description: string }
+const { title, description } = Astro.props;
+---
+<Base title={`${title} | TEBBY`} description={description}>
+  <div class="info">
+    <header class="shop-head">
+      <h1>{title}</h1>
+      <p class="shop-intro">Dernière mise à jour : <span class="a-completer">[date de mise en ligne]</span></p>
+    </header>
+    <slot />
+  </div>
+</Base>

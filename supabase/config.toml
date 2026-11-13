@@ -424,3 +424,9 @@ enabled = true
 # La fonction vérifie elle-même la connexion et les droits.
 [functions.equipe]
 verify_jwt = false
+
+[functions.commander]
+verify_jwt = false
+
+[functions.publier]
+verify_jwt = false

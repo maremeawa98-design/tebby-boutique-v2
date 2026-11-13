@@ -41,16 +41,50 @@ async function checkCart(db: Db, items: Item[]): Promise<Check> {
   };
 }
 
-async function createOrder(db: Db, customer: Customer, items: Item[]) {
-  const { data, error } = await db.rpc('create_order', {
-    p_name: customer.name,
-    p_phone: customer.phone,
-    p_area: `${customer.area} (${customer.zone})`,
-    p_note: customer.note,
-    p_payment: customer.payment,
-    p_items: items.map((i) => ({ variant_id: i.variantId, quantity: i.quantity })),
+type Turnstile = {
+  render: (el: HTMLElement, options: Record<string, unknown>) => string;
+  reset: (id: string) => void;
+  remove: (id: string) => void;
+};
+declare global {
+  interface Window { turnstile?: Turnstile }
+}
+
+const SITE_KEY = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY as string;
+let loading: Promise<Turnstile> | undefined;
+
+// Le script anti-robot n'est chargé qu'à l'étape des coordonnées.
+function loadTurnstile() {
+  loading ??= new Promise((resolve, reject) => {
+    const script = document.createElement('script');
+    script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+    script.async = true;
+    script.onload = () => (window.turnstile ? resolve(window.turnstile) : reject(new Error('Turnstile absent')));
+    script.onerror = () => {
+      loading = undefined;
+      reject(new Error('Turnstile indisponible'));
+    };
+    document.head.append(script);
   });
-  if (error) throw error;
+  return loading;
+}
+
+async function createOrder(db: Db, customer: Customer, items: Item[], token: string) {
+  const { data, error } = await db.functions.invoke('commander', {
+    body: {
+      token,
+      name: customer.name,
+      phone: customer.phone,
+      area: `${customer.area} (${customer.zone})`,
+      note: customer.note,
+      payment: customer.payment,
+      items: items.map((i) => ({ variant_id: i.variantId, quantity: i.quantity })),
+    },
+  });
+  if (error) {
+    const detail = await (error as { context?: Response }).context?.json?.().catch(() => null);
+    throw new Error(detail?.error ?? '');
+  }
   const lines: Line[] = data.items.map((l: { name: string; size: string; quantity: number; unit_price: number }) => ({
     name: l.name,
     size: l.size,
@@ -67,6 +101,7 @@ function explain(err: unknown) {
   if (/quartier/i.test(message)) return 'Indiquez votre quartier et votre ville.';
   if (/stock/i.test(message)) return `${message}. Réduisez la quantité ou choisissez une autre taille.`;
   if (/indisponible/i.test(message)) return "Un article n'est plus disponible. Retirez-le du panier, puis réessayez.";
+  if (/trop de commandes|anti-robot/i.test(message)) return message;
   return "La commande n'a pas pu être créée. Vérifiez votre connexion, puis réessayez.";
 }
 
@@ -105,6 +140,10 @@ export default function CartDrawer({ rates }: { rates: DeliveryRate[] }) {
   const [step, setStep] = useState<'panier' | 'infos'>('panier');
   const [notice, setNotice] = useState('');
   const title = useRef<HTMLHeadingElement>(null);
+  const robot = useRef<HTMLDivElement>(null);
+  const widget = useRef<string | null>(null);
+  const [token, setToken] = useState('');
+  const [robotError, setRobotError] = useState('');
 
   useEffect(() => {
     const el = dialog.current;
@@ -117,6 +156,32 @@ export default function CartDrawer({ rates }: { rates: DeliveryRate[] }) {
   useEffect(() => {
     if (dialog.current?.open) title.current?.focus();
   }, [step, sent]);
+
+  const showForm = step === 'infos' && items.length > 0 && !sent;
+  useEffect(() => {
+    if (!showForm) return;
+    let live = true;
+    loadTurnstile()
+      .then((turnstile) => {
+        if (!live || !robot.current) return;
+        widget.current = turnstile.render(robot.current, {
+          sitekey: SITE_KEY,
+          theme: 'dark',
+          size: 'flexible',
+          language: 'fr',
+          callback: (value: string) => { setToken(value); setRobotError(''); },
+          'expired-callback': () => setToken(''),
+          'error-callback': () => setRobotError('La vérification anti-robot ne se charge pas. Rechargez la page.'),
+        });
+      })
+      .catch(() => setRobotError('La vérification anti-robot ne se charge pas. Vérifiez votre connexion.'));
+    return () => {
+      live = false;
+      if (widget.current) window.turnstile?.remove(widget.current);
+      widget.current = null;
+      setToken('');
+    };
+  }, [showForm]);
 
   const set = <K extends keyof Customer>(key: K, value: Customer[K]) => setCustomer((c) => ({ ...c, [key]: value }));
   const fee = zoneFee(rates, customer.zone);
@@ -141,7 +206,7 @@ export default function CartDrawer({ rates }: { rates: DeliveryRate[] }) {
         setNotice(check.notice);
         setStep('panier');
       } else {
-        const order = await createOrder(db, customer, items);
+        const order = await createOrder(db, customer, items, token);
         setSent({ number: order.number, text: orderMessage(order.lines, customer, fee, order.number) });
         cart.clear();
         setCustomer(emptyCustomer(rates));
@@ -149,6 +214,9 @@ export default function CartDrawer({ rates }: { rates: DeliveryRate[] }) {
       }
     } catch (err) {
       setError(explain(err));
+      // Un jeton ne sert qu'une fois : on en redemande un pour le prochain essai.
+      setToken('');
+      if (widget.current) window.turnstile?.reset(widget.current);
     }
     setBusy(false);
   }
@@ -241,9 +309,11 @@ export default function CartDrawer({ rates }: { rates: DeliveryRate[] }) {
                 <div><dt>Livraison estimée</dt><dd>{fee === null ? 'À confirmer' : fcfa(fee)}</dd></div>
                 <div className="sum-total"><dt>Total estimé</dt><dd>{fcfa(total + (fee ?? 0))}</dd></div>
               </dl>
+              <div className="robot" ref={robot} />
+              {robotError && <p className="form-error" role="alert">{robotError}</p>}
               {error && <p className="form-error" role="alert">{error}</p>}
-              <button className="btn btn-or" disabled={busy}>{busy ? 'Création…' : 'Créer ma commande'}</button>
-              <p className="fine">Rien n'est débité ici. On confirme le total avec vous sur WhatsApp.</p>
+              <button className="btn btn-or" disabled={busy || !token}>{busy ? 'Création…' : token ? 'Créer ma commande' : 'Vérification…'}</button>
+              <p className="fine">Rien n'est débité ici. On confirme le total avec vous sur WhatsApp. En commandant, vous acceptez les <a href="/conditions-de-vente">conditions de vente</a> et la <a href="/confidentialite">politique de confidentialité</a>.</p>
             </div>
           </form>
         )}

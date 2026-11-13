@@ -1,6 +1,6 @@
 # Plan de déploiement TEBBY
 
-Mis à jour le 13 novembre 2026.
+Mis à jour le 13 novembre 2026. Projet Supabase : `gdoitiynfzvfyuptzxnt` (région eu-west-2, Londres).
 
 ## Ce qu'on met en ligne
 
@@ -24,18 +24,12 @@ Légende : **[Vous]** = à faire par TEBBY (comptes, paiements, informations). *
    - Cloudflare : https://dash.cloudflare.com
 4. **[Vous]** Rassembler pour les textes légaux : nom du responsable, NINEA, RCCM, adresse, délai de livraison, conditions de retour.
 
-## Étape 1. Finir le code avant la mise en ligne (bloquants)
+## Étape 1. Finir le code avant la mise en ligne (fait le 13 novembre)
 
-5. **[Dev] Anti-spam des commandes.** Aujourd'hui, n'importe qui peut créer des commandes en masse.
-   - Cloudflare Turnstile (gratuit) sur le bouton « Créer ma commande ».
-   - Une fonction Supabase `commander` vérifie le jeton Turnstile, puis appelle `create_order`. L'appel direct depuis le navigateur est retiré.
-   - Limite en base : quelques commandes par numéro de téléphone et par heure.
-6. **[Dev] Bouton « Mettre le site à jour » dans l'admin.**
-   - Il appelle une fonction Supabase `publier`, qui vérifie que l'utilisateur fait partie de l'équipe, puis déclenche le « deploy hook » Cloudflare.
-   - L'adresse du hook reste un secret côté Supabase : visible dans le navigateur, n'importe qui pourrait épuiser les 500 builds mensuels.
-7. **[Dev] Pages légales** : mentions légales, conditions de vente, politique de confidentialité (données collectées : nom, téléphone, quartier). Liens dans le pied de page et sous le bouton de commande.
-8. **[Dev] Maintien en éveil de Supabase.** Un projet gratuit se met en pause après 7 jours sans activité. Le site étant statique, une semaine calme suffirait à bloquer commandes et admin. Une tâche GitHub Actions planifiée interroge la base une fois par jour.
-9. **[Dev]** Retirer la balise de vérification Google de l'ancien site et préparer celle du nouveau domaine.
+5. **Anti-spam des commandes** : fait. Les commandes passent par la fonction `commander`, qui vérifie Cloudflare Turnstile. L'appel direct de `create_order` est fermé, et un même numéro ne peut pas passer plus de 5 commandes par heure.
+6. **Bouton « Mettre le site à jour »** : fait, dans Produits et Réglages. Il appelle la fonction `publier`, qui garde le deploy hook secret et refuse un second build dans les 2 minutes.
+7. **Pages légales** : faites (`/mentions-legales`, `/conditions-de-vente`, `/confidentialite`), avec des champs **[à compléter]** surlignés. **[Vous]** fournir NINEA, RCCM, adresse, délai de livraison, frais de retour et durée de conservation. Faire relire par un juriste si possible.
+8. **Maintien en éveil** : fait, `.github/workflows/maintien-supabase.yml`. **[Dev]** ajouter les secrets `SUPABASE_URL` et `SUPABASE_PUBLISHABLE_KEY` dans GitHub (Settings > Secrets and variables > Actions). GitHub suspend les tâches planifiées d'un dépôt sans activité pendant 60 jours : il suffit alors de les réactiver.
 
 ## Étape 2. Supabase en ligne
 
@@ -46,7 +40,12 @@ Légende : **[Vous]** = à faire par TEBBY (comptes, paiements, informations). *
     npx supabase link --project-ref <ref-du-projet>
     npx supabase db push            # applique supabase/migrations, sans seed.sql
     npx supabase functions deploy equipe
+    npx supabase functions deploy commander
+    npx supabase functions deploy publier
+    npx supabase secrets set TURNSTILE_SECRET=<clé secrète Turnstile>
+    npx supabase secrets set DEPLOY_HOOK_URL=<adresse du deploy hook Cloudflare>
     ```
+    `db push` demande le mot de passe de la base : le lancer depuis le Terminal du Mac.
 12. **[Dev]** Importer le catalogue et créer le premier compte de l'équipe, avec un fichier `.env.production` local, jamais versionné :
     ```sh
     node --env-file=.env.production scripts/import-catalogue.mjs
@@ -63,7 +62,8 @@ Légende : **[Vous]** = à faire par TEBBY (comptes, paiements, informations). *
 
 ## Étape 3. Cloudflare Pages
 
-14. **[Vous]** Dans Cloudflare : Workers & Pages > Créer > Pages > Connecter GitHub > dépôt `tebby-boutique-v2`.
+14. **[Vous]** Dans Cloudflare : Turnstile > Add widget, nom `TEBBY`, mode **Managed**, domaines `<domaine>` et `<projet>.pages.dev`. Garder la clé publique (site key) et la clé secrète (secret key).
+14 bis. **[Vous]** Dans Cloudflare : Workers & Pages > Créer > Pages > Connecter GitHub > dépôt `tebby-boutique-v2`.
 15. **[Dev]** Réglages du build :
     - Framework : Astro. Commande : `pnpm build`. Dossier de sortie : `dist`.
     - Version de Node : lue dans `.node-version` (22.23.1).
@@ -76,6 +76,7 @@ Légende : **[Vous]** = à faire par TEBBY (comptes, paiements, informations). *
       | `PUBLIC_SITE_URL` | `https://<domaine>` |
       | `PUBLIC_WHATSAPP_SALES` | `221781898385` |
       | `PUBLIC_WAVE_NUMBER` | `78 189 83 85` |
+      | `PUBLIC_TURNSTILE_SITE_KEY` | Clé publique Turnstile |
 
       La clé secrète Supabase ne va **jamais** dans Cloudflare.
 16. **[Dev]** Premier déploiement sur l'adresse `*.pages.dev`, puis vérifications de l'étape 5.

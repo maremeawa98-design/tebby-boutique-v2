@@ -373,7 +373,6 @@ export default function Settings({ email }: { email: string }) {
   return (
     <>
       <h1>Réglages</h1>
-      <p className="muted">Les rubriques et les tarifs apparaissent sur le site à sa prochaine mise à jour.</p>
       <div className="stack">
         <Rubriques />
         <Delivery />

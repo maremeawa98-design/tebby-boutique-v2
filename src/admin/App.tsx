@@ -5,6 +5,7 @@ import { useOrderAlerts } from './alertes';
 import Dashboard from './Dashboard';
 import Orders from './Orders';
 import Products from './Products';
+import Publish from './Publish';
 import Settings from './Settings';
 
 const MIN_PASSWORD = 10;
@@ -114,6 +115,7 @@ function Shell({ email }: { email: string }) {
             <button className="primary" onClick={alerts.enable}>Activer les alertes</button>
           </div>
         )}
+        {(tab === 'produits' || tab === 'reglages') && <Publish />}
         {tab === 'commandes' && <Orders tick={alerts.tick} />}
         {tab === 'produits' && <Products />}
         {tab === 'bilan' && <Dashboard tick={alerts.tick} />}

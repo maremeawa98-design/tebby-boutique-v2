@@ -343,7 +343,6 @@ export default function Products() {
         <h1>Produits</h1>
         <button className="primary" onClick={create}>Nouveau produit</button>
       </div>
-      <p className="muted">Les changements apparaissent sur le site à sa prochaine mise à jour.</p>
       <input className="search" type="search" aria-label="Rechercher un produit" placeholder="Rechercher…" value={search} onChange={(e) => setSearch(e.target.value)} />
       {error && <p className="error" role="alert">{error}</p>}
       {products === null && !error && <p className="muted">Chargement…</p>}
