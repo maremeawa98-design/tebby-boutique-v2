@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import { fcfa } from '../lib/format';
 import { getCatalogue } from '../lib/catalogue';
+import { MAPS_URL } from '../lib/commande';
 const { rates } = await getCatalogue();
 ---
 <Base title="Livraison, paiement et retours | TEBBY" description="Tailles, zones et tarifs de livraison, paiement à la livraison ou par Wave, droit de rétractation : tout ce qu'il faut savoir avant de commander chez TEBBY.">
@@ -35,7 +36,7 @@ const { rates } = await getCatalogue();
     </section>
     <section>
       <h2>Nous contacter</h2>
-      <p>TEBBY, Petit Mbao, Sénégal.<br />WhatsApp et téléphone : <a href="https://wa.me/221781898385">+221 78 189 83 85</a> et <a href="https://wa.me/221771493449">+221 77 149 34 49</a>.</p>
+      <p>TEBBY, Petit Mbao, Sénégal (<a href={MAPS_URL} target="_blank" rel="noreferrer">voir sur Google Maps</a>).<br />WhatsApp et téléphone : <a href="https://wa.me/221781898385">+221 78 189 83 85</a> et <a href="https://wa.me/221771493449">+221 77 149 34 49</a>.</p>
     </section>
   </div>
 </Base>

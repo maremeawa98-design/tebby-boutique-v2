@@ -1,6 +1,9 @@
 import { fcfa } from './format';
 import type { CartItem } from './cart';
 
+// Fiche Google Maps de la boutique.
+export const MAPS_URL = 'https://share.google/1m0hlDMm4Ln2JSnyi';
+
 export const SALES_NUMBER = import.meta.env.PUBLIC_WHATSAPP_SALES as string;
 export const whatsappUrl = (text: string) => `https://wa.me/${SALES_NUMBER}?text=${encodeURIComponent(text)}`;
 

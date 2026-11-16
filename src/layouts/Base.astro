@@ -4,6 +4,7 @@ import '@fontsource/instrument-serif/400-italic.css';
 import '@fontsource-variable/hanken-grotesk/wght.css';
 import '../styles/site.css';
 import CartButton from '../islands/CartButton';
+import { MAPS_URL } from '../lib/commande';
 import CartDrawer from '../islands/CartDrawer';
 import { getCatalogue } from '../lib/catalogue';
 
@@ -60,6 +61,7 @@ const { rates } = await getCatalogue();
         <div>
           <p class="footer-kicker">La marque qui rassure</p>
           <p>Petit Mbao, Sénégal</p>
+          <p><a href={MAPS_URL} target="_blank" rel="noreferrer">Voir sur Google Maps</a></p>
         </div>
         <div>
           <p class="footer-kicker">WhatsApp et téléphone</p>
